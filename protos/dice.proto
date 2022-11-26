@@ -4,16 +4,18 @@ option go_package = "./dice";
 
 // The service definition.
 service Tutorial {
-    // RollDice method
+    // Ping rpc
+    rpc Ping (Empty) returns (Pong) {}
+
+    // RollDice rpc
     rpc RollDice (RollDiceRequest) returns (RollDiceResponse) {}
-    rpc HelloMethod (Empty) returns (Hello) {}
 }
   
 message Empty {
 }
 
-message Hello {
-    string foo = 1;
+message Pong {
+    string message = 1;
 }
 
 // The request message containing coming request
