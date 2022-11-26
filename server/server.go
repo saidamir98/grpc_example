@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 	"uacademy/grpc_example/proto-gen/dice"
-	dService "uacademy/grpc_example/services/dice"
+	dService "uacademy/grpc_example/server/services/dice"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -18,8 +18,9 @@ func main() {
 		panic(err)
 	}
 
+	c := &dService.TutorialService{}
 	s := grpc.NewServer()
-	dice.RegisterTutorialServer(s, &dService.TutorialService{})
+	dice.RegisterTutorialServer(s, c)
 	reflection.Register(s)
 
 	if err := s.Serve(listener); err != nil {

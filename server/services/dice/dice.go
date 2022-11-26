@@ -2,6 +2,7 @@ package dice
 
 import (
 	"context"
+	"log"
 	"math/rand"
 	"uacademy/grpc_example/proto-gen/dice"
 
@@ -31,6 +32,8 @@ func (s *TutorialService) RollDice(ctx context.Context, req *dice.RollDiceReques
 
 // Ping ...
 func (s *TutorialService) Ping(ctx context.Context, req *dice.Empty) (*dice.Pong, error) {
+	log.Println("Ping")
+
 	return &dice.Pong{
 		Message: "OK",
 	}, nil
